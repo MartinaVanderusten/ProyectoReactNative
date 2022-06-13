@@ -7,8 +7,32 @@ class Profile extends Component {
     constructor(props){
       super(props)
       this.state = {
-        
+        name=[],
+        email=[],
+        date=[],
+        numberPosts=[],
+
       }
+      // componentDidMount(){
+      //   db.collection('post').onSnapshot(
+      //     (docs)=>{
+      //       let post = []
+      //       docs.forEach(
+      //         doc => {
+      //           post.push({
+      //             id:doc.id,
+      //             data: doc.data()
+      //           })
+      //         }
+      //       )
+      //       this.setState({
+      //         name:post,
+      //       })
+
+    
+      // }
+      // }
+
     }
     render(){
       return (
