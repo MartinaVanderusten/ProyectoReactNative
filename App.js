@@ -1,8 +1,7 @@
 import { View } from 'react-native';
-
+import StackNavigation from './src/navigation/StackNavigation'
 export default function App() {
   return (
-    <View>
-    </View>
+   <StackNavigation />
   );
 }

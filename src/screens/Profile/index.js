@@ -7,10 +7,10 @@ class Profile extends Component {
     constructor(props){
       super(props)
       this.state = {
-        name=[],
-        email=[],
-        date=[],
-        numberPosts=[],
+        name:[],
+        email:[],
+        date:[],
+        numberPosts:[],
 
       }
       // componentDidMount(){
