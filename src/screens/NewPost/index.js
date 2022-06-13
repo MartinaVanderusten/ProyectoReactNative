@@ -1,5 +1,6 @@
-import { View } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import React, {Component} from 'react'
+
 
 class NewPost extends Component {
     constructor(props){
@@ -9,10 +10,18 @@ class NewPost extends Component {
     }
     render(){
       return (
-        <View>
+        <View style={styles.container}> 
         </View>
       )
     }
   }
   
 export default NewPost
+
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    backgroundColor:'#e76f51'
+  },
+}) 
+

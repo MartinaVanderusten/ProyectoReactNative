@@ -33,15 +33,20 @@ componentDidMount(){
       render(){
         return (
           <View>
-            
+
             <Text>Home</Text>
 
           {/* <FlatList 
             data={this.state.posteos}
             keyExtractor={item => item.id.toString()}
+<<<<<<< HEAD
             renderItem={({ item }) => <Posts info={item}/>}
           
           />*/} 
+=======
+            renderItem={({ item }) => <Posts info={item}/>} 
+          />  */}
+>>>>>>> 483ae372c21ec9c917d30e412edfa43fc21e20c5
               
           </View>
         )
