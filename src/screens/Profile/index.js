@@ -37,12 +37,12 @@ class Profile extends Component {
     render(){
       return (
         <View style={styles.flatlist}>
-          <FlatList 
+          {/* <FlatList 
             data={}
             keyExtractor={}
             renderItem={}
           
-          />
+          /> */}
         </View>
       )
     }
