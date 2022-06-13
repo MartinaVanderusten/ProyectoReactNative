@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Image, FlatList} from 'react-native';
 import {db} from '../../firebase/config'
 
 class Home extends Component {
@@ -32,7 +32,7 @@ componentDidMount(){
 
       render(){
         return (
-          <View style={styles.flatlist}>
+          <View>
           <FlatList 
             data={this.state.posteos}
             keyExtractor={item => item.id.toString()}

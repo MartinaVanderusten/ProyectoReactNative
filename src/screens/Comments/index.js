@@ -15,7 +15,7 @@ class Comments extends Component {
         } 
     }
 
-    componentDidMount(){
+    /* componentDidMount(){
         const idDelDocumentoAModificar = this.props.route.params.id
             db
             // metodo collection: indicar la coleccion sobre la cual vamos a modificar un documento. 
@@ -27,6 +27,11 @@ class Comments extends Component {
                     comments:doc.data().comments
                 })
             })
+    } */
+    render(){
+        return(
+            <View></View>
+        )
     }
 }
 

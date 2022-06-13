@@ -7,7 +7,7 @@ import { auth } from '../firebase/config';
 //Componentes propios
 import Login from '../screens/Login/index'
 import Register from '../screens/Register/index'
-import TabNavigation from '../navigation/TabNavigation'
+import TabNavigation from './TabNavigation'
 import Comments from '../screens/Comments/index'
 
 //Desarrollo del código
@@ -17,7 +17,7 @@ class StackNavigation extends Component{
     constructor(props){
         super(props)
         this.state = {
-            loggedIn: false,
+            loggedIn: true,
         }
     }
 
@@ -42,13 +42,13 @@ class StackNavigation extends Component{
                     {
                         this.state.loggedIn ?
                         <Stack.Group>
-                            <Stack.Screen name='TabNavigation' component={ TabNavigation }/>
-                            <Stack.Screen name='Comment' component={ Comment }/>
+                            <Stack.Screen name='TabNavigation' component={ TabNavigation } options={{headerShown:false}}/>
+                            <Stack.Screen name='Comments' component={ Comments } options={{headerShown:false}}/>
                         </Stack.Group>
                         :
                         <Stack.Group>
-                            <Stack.Screen name='Login' component={ Login }/>
-                            <Stack.Screen name='Register' component={ Register }/>
+                            <Stack.Screen name='Login' component={ Login } options={{headerShown:false}}/>
+                            <Stack.Screen name='Register' component={ Register } options={{headerShown:false}}/>
                         </Stack.Group>
                     }
                 </Stack.Navigator>
