@@ -1,39 +1,107 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
 import React, {Component} from 'react'
-import { FontAwesome } from '@expo/vector-icons'
+import { db, auth } from '../../firebase/config'
 import firebase from 'firebase'
-import {auth, db} from '../../firebase/config'
-
 
 class Comments extends Component {
-
     constructor(props){
         super(props)
         this.state={
-            comments:[],
-            newComment:''
+            comentarios:[],
+            nuevoComentario:''
         } 
     }
 
-    /* componentDidMount(){
-        const idDelDocumentoAModificar = this.props.route.params.id
+    componentDidMount(){
+        const idDoc = this.props.route.params.id
             db
-            // metodo collection: indicar la coleccion sobre la cual vamos a modificar un documento. 
             .collection('posts')
-            // metodo doc es para identificar el documento que vamos a modificar dentro de () id que firebase le asigno al documento
-            .doc(idDelDocumentoAModificar)
+            .doc(idDoc)
             .onSnapshot(doc => {
                 this.setState({
-                    comments:doc.data().comments
+                    comentarios:doc.data().comments
                 })
             })
-    } */
+    }
+
+    onSubmit(){
+        const comment ={
+            owner: auth.currentUser.email,
+            createdAt: Date.now(),
+            comment: this.state.nuevoComentario
+        }
+
+            db
+            .collection('posts')
+            .doc(this.props.route.params.id)
+            .update({
+                comments:firebase.firestore.FieldValue.arrayUnion(comment)
+            })
+            .then(response => this.setState({nuevoComentario:''}))
+            .catch(error => console.log(error))
+        
+    }
+    
     render(){
-        return(
-            <View></View>
+        return (
+          <View style={styles.container}>
+            <FlatList
+            data={this.state.comentarios}
+            keyExtractor={( item ) => item.createdAt.toString()}
+            renderItem={ ( {item} ) => <View style={styles.comment}>
+                <Text>{item.owner}</Text>
+                <Text>{item.comment}</Text>
+            </View>
+        }
+            />
+            <View>
+                <TextInput
+                placeholder='Agrega tu comentario'
+                onChangeText={
+                    (text) => this.setState({nuevoComentario : text})
+                }
+                value={this.state.nuevoComentario}
+                keyboardType='default'
+                style={styles.inputComment}
+                />
+                <TouchableOpacity 
+                onPress={()=> this.onSubmit()}
+                style={styles.btnComment}
+                disabled={this.state.nuevoComentario === ''? true: false}
+                >
+                    <Text>Comentar</Text>
+                </TouchableOpacity>
+            </View>
+          </View>
         )
     }
 }
 
+const styles = StyleSheet.create({
+    container:{
+      width:'100%',
+      height:'100%',
+      justifyContent:'center',
+      alignItems:'center'
+    },
+    comment:{
+        marginTop:30
+    },
+    containerComment:{
+      flexDirection:'row',
+      width:'90%'
+    },
+    inputComment:{
+      borderWidth:1,
+      backgroundColor:'#c3c3c3',
+      width:'80%'
+    },
+    btnComment:{
+      width:'20%',
+      padding:10,
+      backgroundColor:'#d3d3d3'
+  
+    }
+  })
 
 export default Comments
