@@ -1,6 +1,8 @@
 import React, {Component} from "react";
-import {View, Text, TouchableOpacity, StyleSheet, Image, FlatList} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Image, FlatList, ActivityIndicator} from 'react-native';
 import {db} from '../../firebase/config'
+import Post from '../../components/Post'
+
 
 class Home extends Component {
     constructor(props){
@@ -32,20 +34,28 @@ componentDidMount(){
 
       render(){
         return (
-          <View>
+          <View style={styles.container}>
 
             <Text>Home</Text>
 
-           {/* <FlatList 
+           <FlatList style={styles.posts}
             data={this.state.posteos}
             keyExtractor={item => item.id.toString()}
-            renderItem={({ item }) => <Posts info={item}/>} 
-          />  */}
+            renderItem={({ item }) => <Post info={item}/>}
+          
+          />
+           {/* <ActivityIndicator size='large' color='blue' /> */}
 
           </View>
         )
       }
     }
 
-
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    paddingTop: 10,
+    paddingLeft: 500, 
+  }
+})
 export default Home;

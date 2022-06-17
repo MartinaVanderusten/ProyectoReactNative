@@ -1,6 +1,7 @@
 import { View, FlatList } from 'react-native'
 import React, {Component} from 'react'
 import {db} from '../../firebase/config'
+import {auth} from '../../firebase/config'
 
 
 class Profile extends Component {
@@ -11,10 +12,11 @@ class Profile extends Component {
         email:[],
         date:[],
         numberPosts:[],
+        post: []
 
       }
       // componentDidMount(){
-      //   db.collection('post').onSnapshot(
+      //   db.collection('posts').where('owner', '==', 'emailDelPerfil').onSnapshot(
       //     (docs)=>{
       //       let post = []
       //       docs.forEach(
@@ -26,23 +28,33 @@ class Profile extends Component {
       //         }
       //       )
       //       this.setState({
-      //         name:post,
+      //         post:post,
       //       })
 
     
       // }
       // }
-
     }
+
+      logout(){
+        auth.signOut()
+      }
+    
     render(){
       return (
         <View>
+          <Text>name:</Text>
+        <Text> email: </Text>
+        <Text> Cantidad de posteos: </Text>
+        <Text>Ultima vez conectado: </Text>
+
           {/* <FlatList 
-            data={}
+            data={this.state.post}
             keyExtractor={}
             renderItem={}
           
           /> */}
+
         </View>
       )
     }

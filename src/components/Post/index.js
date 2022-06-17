@@ -13,7 +13,7 @@ class Post extends Component {
         }
     }
 componentDidMount(){
-    // const milike=this.props.info.data.likes.includes(auth.currentUser.email)
+    const milike=this.props.info.data.likes.includes(auth.currentUser.email)
     if( 
         this.props.info.data.likes        
     )
@@ -22,36 +22,39 @@ componentDidMount(){
             cantidadLikes: this.props.info.data.likes.length
         })
     } console.log(this.props.info.data.likes)
-    // if(
-    //     milike 
-    // ) {
-    //     this.setState({
-    //         islike: true
-    //     })
+    if(
+        milike 
+    ) {
+        this.setState({
+            islike: true
+        })
             
         
-    // }
+    }
 }
 
     like(){
         this.setState({
-            islike: true
+            islike: true,
+            cantidadLikes: this.state.cantidadLikes +1
         })
     
     }
     dislike(){
         this.setState({
-            islike: false
+            islike: false,
+            cantidadLikes: this.state.cantidadLikes -1
         })
     }
  render(){
      return(
          <View>
-             <View>
+             <View style={styles.card}>
+                 <Text>{this.props.info.data.owner}</Text>
                  <Image style={styles.image} 
-                 source={{uri:"https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/202.png"}}/> 
+                 source={this.props.info.data.foto}/> 
                  <Text>
-                     Lorem 
+                     {this.props.info.data.description} 
                  </Text>
              </View>
              <View>
@@ -67,6 +70,7 @@ componentDidMount(){
                          <FontAwesome name='heart-o' size={24} color='black'/>
                      </TouchableOpacity>
                     }
+                    <Text>Comentarios: {this.props.info.data.comments}</Text>
                  </View>
              </View>
          </View>
@@ -76,11 +80,11 @@ componentDidMount(){
 }
 const styles = StyleSheet.create({
     card: {
-
+    paddingTop:20,
     },
     image: {
-        height: 100,
-        width: 100
+        height: 200,
+        width: 200
     }
 })
 
