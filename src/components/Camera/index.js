@@ -73,36 +73,39 @@ export default class MyCamera extends Component {
             this.state.permisos ?
                 this.state.mostrarCamara === false ?
                 <>
-                    <Text>Aqui vamos a renderizar la imagen</Text>
-                    <Image
-                    style={styles.camara}
+                    
+                    <Image style={styles.foto}
                     source={{uri: this.state.urlFoto}}
                     />
-                    <View style={styles.container}>
-                        <TouchableOpacity onPress={()=> this.guardarFoto()}>
+                   
+                    <View style={styles.aceptar}>
+                        <TouchableOpacity style={styles.button} onPress={()=> this.guardarFoto()}>
                             <Text>
                                 Aceptar
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity  onPress={()=> this.descartarFoto()}>
+                        <TouchableOpacity style={styles.button} onPress={()=> this.descartarFoto()}>
                             <Text>
                                 Rechazar
                             </Text>
                         </TouchableOpacity>
                     </View>
+                
+
                 </>
 
                 :
-                <View style={styles.container}>
+                <>
+                    <View style={styles.camara}>
                     <Camera
-                        styles={styles.camara}
                         type={Camera.Constants.Type.back}
                         ref={ metodos => this.metodosDeCamara = metodos}
-                    />
+                    /> 
+                    </View>
                     <TouchableOpacity style={styles.button} onPress = {()=> this.tomaLaFoto()}>
                         <Text>Sacar foto</Text>
                     </TouchableOpacity>
-                </View>
+                </>
             :
 
             <Text>No tienes permisos para usar la Cámara</Text>
@@ -114,14 +117,38 @@ export default class MyCamera extends Component {
 
 const styles = StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
+        backgroundColor: '#e76f51',
+        alignContent:'center',
+        alignItems: 'center',
+        justifyContent:'center',
+        width: '100%',
     },
+
     camara:{
-      flex:7  
+      flex:5/7,  
+      aspectRatio:1/1,
+      width: '60%'
     },
     button:{
-        flex:1,
+        flex:1/7,
         justifyContent:'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        width: '20%',
+        backgroundColor:'#2a9d8f',
     },
+
+    foto:{
+        flex:5/7,  
+        aspectRatio:1/1,
+    },
+
+    aceptar:{
+        flex:1/7,
+        justifyContent:'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        width: '100%'
+        
+    }
 })
