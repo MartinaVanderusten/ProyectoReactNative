@@ -8,6 +8,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import Home from '../screens/Home/'
 import NewPost from '../screens/NewPost/'
 import Profile from '../screens/Profile/'
+/* import Search from '../screens/Search/' */
 
 //Desarrollo del código
 const Tab = createBottomTabNavigator()
@@ -23,6 +24,8 @@ class TabNavigation extends Component{
             <Tab.Navigator screenOptions={ {tabBarShowLabel:false, headerShown:false} }>
                 <Tab.Screen style={styles.home} name='Home' component={Home}
                 options={{tabBarIcon: () => <FontAwesome5 name="home" size={24} color="black" />}}/>
+                {/* <Tab.Screen style={styles.home} name='Search' component={Search}
+                options={{tabBarIcon: () => <FontAwesome5 name="search" size={24} color="black" />}}/> */}
                 <Tab.Screen style={styles.profile} name='Profile' component={Profile}
                 options={{tabBarIcon: () => <FontAwesome5 name="child" size={24} color="black" />}}/> 
                 <Tab.Screen style={styles.newPost} name='NewPost' component={NewPost}

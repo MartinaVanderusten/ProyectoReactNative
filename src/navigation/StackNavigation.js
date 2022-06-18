@@ -22,13 +22,13 @@ class StackNavigation extends Component{
         }
     }
 
-/*     componentDidMount(){
+    componentDidMount(){
         auth.onAuthStateChanged(user => {
             if(user){
                 this.setState({logedIn: true})
             }
         })
-    } */
+    }
 
     signUp(username, email, password){
         auth.createUserWithEmailAndPassword(email, password)

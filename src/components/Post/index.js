@@ -21,7 +21,7 @@ componentDidMount(){
         this.setState({
             cantidadLikes: this.props.info.data.likes.length
         })
-    } console.log(this.props.info.data.likes)
+    } /* console.log(this.props.info.data.likes) */
     if(
         milike 
     ) {
