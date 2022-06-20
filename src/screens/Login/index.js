@@ -21,7 +21,7 @@ class Login extends Component {
       return (
         <View style={styles.body}>
           <View style={styles.conteiner}>
-            <Text>Login</Text>
+            <Text style={styles.textTitle}>Login</Text>
             <TextInput style={styles.textInput}
               keyboardType='email-address'
               placeholder='e-mail'
@@ -35,20 +35,20 @@ class Login extends Component {
             />
             { this.props.error ?
               <React.Fragment>
-                <Text>{this.props.error}</Text>
-                <TouchableOpacity onPress={()=>this.props.errorDelete()}>
-                  <Text>Okey</Text>
+                <Text  style={styles.textError}>{this.props.error}</Text>
+                <TouchableOpacity style={styles.okey} onPress={()=>this.props.errorDelete()}>
+                  <Text style={styles.text}>Okey</Text>
                 </TouchableOpacity>
               </React.Fragment>
               :
-              <TouchableOpacity onPress={() =>this.send()}>
-                <Text>Send</Text>
+              <TouchableOpacity style={styles.send} onPress={() =>this.send()}>
+                <Text style={styles.text}>Send</Text>
               </TouchableOpacity>
             }
-            <View>
-              <Text>¿Todavía no tenés tu cuenta?</Text>
+            <View style={styles.navigate}>
+              <Text style={styles.text}>¿Todavía no tenés tu cuenta?</Text>
               <TouchableOpacity onPress={()=>this.props.navigation.navigate('Register')}>
-                <Text>Registrate</Text>
+                <Text style={styles.textNav}>Registrate</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -72,14 +72,62 @@ const styles = StyleSheet.create({
     alignContent:'center',
     justifyContent:'center',
     backgroundColor:'#ffffff',
-    width:'40%',
+    minWidth:265,
+    width:'50%',
     aspectRatio:1/1,
-    borderRadius:15,
+    maxHeight:'80%',
+    minHeight:'fit-content',
+    padding:20,
+    borderRadius:20,
     borderWidth:5,
     borderColor:'#2a9d8f'
   },
   textInput:{
     height:20,
-    width:'40%',
-  }
+    width:'64%',
+    marginBottom:10,
+    paddingVertical:12,
+    paddingHorizontal:5,
+    backgroundColor:'#264653',
+    borderRadius:5,
+    borderWidth:2,
+    borderColor:'#2a9d8f'
+  },
+  text:{
+    textAlign:'center',
+  },
+  textNav:{
+    textAlign:'center',
+    textDecorationLine:'underline',
+  },
+  textTitle:{
+    textAlign:'center',
+    marginBottom:10,
+    fontSize:24,
+    marginBottom:20,
+  },
+  textError:{
+    textAlign:'center',
+    fontWeight:'bold',
+    backgroundColor:'rgba(97, 0, 0, 0.8)',
+    color:'#b3b3b3',
+    padding:5,
+    borderRadius:3,
+  },
+  navigate:{
+    marginTop:15,
+  },
+  send:{
+    backgroundColor:'#2a9d8f',
+    width:'32%',
+    padding:5,
+    borderRadius:5,
+  },
+  okey:{
+    backgroundColor:'#2a9d8f',
+    width:'32%',
+    padding:5,
+    borderRadius:5,
+    marginTop:5,
+  },
 })
