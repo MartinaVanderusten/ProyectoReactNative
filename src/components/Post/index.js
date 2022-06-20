@@ -10,6 +10,7 @@ class Post extends Component {
             islike: false,
             cantidadLikes: 0,
             comentarios: [],
+            delete: false
         }
     }
 componentDidMount(){
@@ -31,6 +32,7 @@ componentDidMount(){
             
         
     }
+   
 }
 
     like(){
@@ -56,6 +58,7 @@ componentDidMount(){
                  <Text>
                      {this.props.info.data.description} 
                  </Text>
+                 
              </View>
              <View>
                  <View>
@@ -70,6 +73,7 @@ componentDidMount(){
                          <FontAwesome name='heart-o' size={24} color='black'/>
                      </TouchableOpacity>
                     }
+                    <TouchableOpacity onPress={()=> this.delete()}><Text>Borrar publicación</Text></TouchableOpacity>
                     <Text>Comentarios: {this.props.info.data.comments}</Text>
                  </View>
              </View>
