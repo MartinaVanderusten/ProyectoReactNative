@@ -23,7 +23,7 @@ export default class MyCamera extends Component {
     }
 
     tomaLaFoto(){
-        console.log('Digan Whisky!')
+        console.log('take picture')
         this.metodosDeCamara.takePictureAsync()
         .then(dataFoto => {
             console.log(dataFoto)
@@ -39,6 +39,7 @@ export default class MyCamera extends Component {
         .then(response => {
             // console.log(response)    
             return response.blob()
+            //blob interpeta el archivo binario y transformarlo para que javascript lo entienda.
         })
         .then(foto => {
             // console.log(foto)

@@ -14,6 +14,7 @@ class Post extends Component {
         }
     }
 componentDidMount(){
+    console.log ('llega aqui')
     const milike=this.props.info.data.likes.includes(auth.currentUser.email)
     if( 
         this.props.info.data.likes        
@@ -74,7 +75,10 @@ componentDidMount(){
                      </TouchableOpacity>
                     }
                     <TouchableOpacity onPress={()=> this.delete()}><Text>Borrar publicación</Text></TouchableOpacity>
-                    <Text>Comentarios: {this.props.info.data.comments}</Text>
+                    {/*<Text>Comentarios: {this.props.info.data.comments}</Text>*/}
+                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Comments', {id: this.props.info.id}) }>
+                        <Text> Comentar </Text>
+                    </TouchableOpacity>   
                  </View>
              </View>
          </View>

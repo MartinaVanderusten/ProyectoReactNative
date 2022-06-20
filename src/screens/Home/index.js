@@ -12,7 +12,7 @@ class Home extends Component {
       posteos: [],
       posteosSearch: [],
       emailSearch:"",
-      search:true,
+      search:false,
     }
   }
 
@@ -20,19 +20,20 @@ class Home extends Component {
     db.collection('posts').orderBy('createdAt', 'desc')
     .onSnapshot(
       docs=> {
-        let posteos = []
+        let posteosArray = []
         docs.forEach(
           doc => {
-            posteos.push({
+            posteosArray.push({
               id:doc.id,
               data: doc.data()
             })
           }
         )
         this.setState({
-          posteos:posteos,
-          posteosSearch:posteos
-        })
+          posteos:posteosArray,
+          posteosSearch:posteosArray,
+          search:true
+        }, ()=> console.log(this.state.posteosSearch))
       }
     )
   }
@@ -105,11 +106,13 @@ class Home extends Component {
         </View>
         {/** Contenido del home */}
         <View style={styles.container}>
-          { this.state.search ?
-              <FlatList style={styles.posts}
-              data={this.state.posteosSearch}
-              keyExtractor={item => item.id.toString()}
-              renderItem={({ item }) => <Post info={item}/>}/>
+          { 
+          this.state.search ?
+          <FlatList style={styles.posts}
+          data={this.state.posteosSearch}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({ item }) => <Post info={item} navigation={this.props.navigation}/>}
+          />
               /* <ActivityIndicator size='large' color='blue' /> */
             :
               <Text style={styles.noResult}>El usuario no existe o aún no tiene publicaciones.</Text>
