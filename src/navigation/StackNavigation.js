@@ -10,6 +10,7 @@ import Register from '../screens/Register/index'
 import TabNavigation from './TabNavigation'
 import Comments from '../screens/Comments/index'
 
+
 //Desarrollo del código
 const Stack = createNativeStackNavigator() //Abreviación del Stack
 
@@ -64,11 +65,13 @@ class StackNavigation extends Component{
         return(
             <NavigationContainer>
                 <Stack.Navigator>
+               
                     {
                         this.state.logedIn ?
                         <Stack.Group>
-                            <Stack.Screen name='TabNavigation' component={ TabNavigation } options={{headerShown:false}}/>
+                            <Stack.Screen name='TabNavigation' component={ TabNavigation } options={{headerShown:false}}initialParams = {{ logout: ()=> this.logout()}}/> 
                             <Stack.Screen name='Comments' component={ Comments } options={{headerShown:false}}/>
+                            
                         </Stack.Group>
                         :
                         <Stack.Group>
@@ -90,6 +93,7 @@ class StackNavigation extends Component{
                                         signUp={(username, email, password)=>this.signUp(username, email, password)}
                                         {...props}/>}
                             />
+                            
                         </Stack.Group>
                     }
                 </Stack.Navigator>

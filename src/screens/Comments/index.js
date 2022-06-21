@@ -20,7 +20,7 @@ class Comments extends Component {
             .onSnapshot(doc => {
                 this.setState({
                     comentarios:doc.data().comments
-                })
+                }, ()=>  console.log(this.state.comentarios.length))
             })
     }
 
@@ -39,7 +39,7 @@ class Comments extends Component {
             })
             .then(response => this.setState({nuevoComentario:''}))
             .catch(error => console.log(error))
-        
+           
     }
     
     render(){

@@ -38,8 +38,9 @@ componentDidMount(){
         const documento = this.props.info.data
         return (
             <View>
+                 <Text>Nombre: {documento.name}</Text>
                 <Text>Email: {documento.owner}</Text>
-                <Text>Nombre: {documento.name}</Text>
+               
               
             </View>
         )

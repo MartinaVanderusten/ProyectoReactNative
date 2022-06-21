@@ -4,6 +4,7 @@ import { StyleSheet, } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { FontAwesome5 } from '@expo/vector-icons';
 
+
 //Componentes propios
 import Home from '../screens/Home/'
 import NewPost from '../screens/NewPost/'
@@ -19,7 +20,9 @@ class TabNavigation extends Component{
         this.state = {
         }
     }
+  
     render(){
+     
         return(
             <Tab.Navigator
               initialRouteName='Home'
@@ -32,7 +35,8 @@ class TabNavigation extends Component{
                 {/* Screens */}
                 <Tab.Screen name='Home' component={Home}
                 options={{tabBarIcon: () => <FontAwesome5 name="home" size={24} color="black"/>}}/>
-                <Tab.Screen style={styles.profile} name='Profile' component={Profile}
+                <Tab.Screen style={styles.profile} name='Profile' component={Profile} initialParams={{logout: () => this.props.route.params.logout()}}
+        
                 options={{tabBarIcon: () => <FontAwesome5 name="child" size={24} color="black" />}}/> 
                 <Tab.Screen style={styles.newPost} name='NewPost' component={NewPost}
                 options={{tabBarIcon: () => <FontAwesome5 name="upload" size={24} color="black" />}}/>

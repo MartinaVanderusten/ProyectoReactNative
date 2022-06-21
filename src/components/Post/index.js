@@ -1,42 +1,86 @@
 import React, {Component} from "react";
 import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import {FontAwesome} from '@expo/vector-icons'
-import {auth} from '../../firebase/config'
+import {auth, db} from '../../firebase/config'
+import firebase from 'firebase'
+
 
 class Post extends Component {
     constructor(props){
         super(props)
         this.state={
             islike: false,
-            cantidadLikes: 0,
+            cantidadLikes: this.props.info.data.likes.length,
             comentarios: [],
-            delete: false
+            posteos:[]
         }
     }
 componentDidMount(){
-    console.log ('llega aqui')
     const milike=this.props.info.data.likes.includes(auth.currentUser.email)
     if( 
-        this.props.info.data.likes        
+        this.props.info.data.likes.includes(auth.currentUser.email)        
     )
     {
         this.setState({
-            cantidadLikes: this.props.info.data.likes.length
+           islike: true
         })
     } /* console.log(this.props.info.data.likes) */
-    if(
-        milike 
-    ) {
+    auth.onAuthStateChanged( user => {
+        if(user){
+          this.setState({email: auth.currentUser.email})
+      }
+        console.log(user.metadata.lastSignInTime)
+       console.log(user)
+       console.log(this.state.email)
+       db.collection('posts').where('owner', '==', this.state.email)
+       .onSnapshot(
+         docs=> {
+           let posteos = []
+           docs.forEach(
+             doc => {
+               posteos.push({
+                 id:doc.id,
+                 data: doc.data()
+               })
+             } 
+           )
+           this.setState({
+             posteos:posteos,
+             numeroPosts: posteos.length
+             
+           } )
+         } 
+       )
+       db.collection('users').where('owner', '==', this.state.email)
+    .onSnapshot(
+      docs=> {
+        let name = []
+        docs.forEach(
+          doc => {
+            name.push({
+              id:doc.id,
+              data: doc.data()
+
+            })
+          }
+        )
         this.setState({
-            islike: true
+          name:name
+          
         })
-            
-        
-    }
+      } 
+    )
+      
+      })
    
 }
 
     like(){
+        db.collection('posts')
+            .doc(this.props.info.id)
+            .update({
+                likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
+            })
         this.setState({
             islike: true,
             cantidadLikes: this.state.cantidadLikes +1
@@ -44,11 +88,24 @@ componentDidMount(){
     
     }
     dislike(){
+        console.log(this.props.info)
+        db.collection('posts')
+            .doc(this.props.info.id)
+            .update({
+                likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
+            })
         this.setState({
             islike: false,
             cantidadLikes: this.state.cantidadLikes -1
         })
     }
+    posteos(){
+        this.setState({
+            posteos: this.props.info.data.id
+        },()=>console.log(posteos))
+    }
+
+
  render(){
      return(
          <View>
@@ -74,9 +131,7 @@ componentDidMount(){
                          <FontAwesome name='heart-o' size={24} color='black'/>
                      </TouchableOpacity>
                     }
-                    <TouchableOpacity onPress={()=> this.delete()}><Text>Borrar publicación</Text></TouchableOpacity>
-                    {/*<Text>Comentarios: {this.props.info.data.comments}</Text>*/}
-                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Comments', {id: this.props.info.id}) }>
+                   <TouchableOpacity onPress={()=>this.props.navigation.navigate('Comments', {id: this.props.info.id}) }>
                         <Text> Comentar </Text>
                     </TouchableOpacity>   
                  </View>

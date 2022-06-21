@@ -4,6 +4,7 @@ import {db} from '../../firebase/config'
 import {auth} from '../../firebase/config'
 import User from '../../components/User'
 import Post from '../../components/Post'
+import Login from '../Login'
 
 
 class Profile extends Component {
@@ -46,12 +47,6 @@ class Profile extends Component {
            }, ()=> console.log(posteos.length),console.log(this.state.email), console.log(posteos))
          } 
        )
-      //  borrarPost(id){
-      //   // let posteo = this.state.posteos.filter(posts => posts.id !== id)
-      //   // this.setState({
-      //   //   posteos: posteo
-      //   // }), () => console.log(posteos)
-      //  }
        db.collection('users').where('owner', '==', this.state.email)
     .onSnapshot(
       docs=> {
@@ -73,29 +68,12 @@ class Profile extends Component {
     )
       
       })
-     
-      
-    // db.collection('users').where('owner', '==', this.state.email)
-    
-  //   if(
-  //     this.state.posteos
-  //   ) {
-  //   this.setState({
-  //     numeroPosts: this.state.posteos.length
-  //   }, ()=>console.log(this.state.numeroPosts))
-  // }
-    
-}
-  
-logout(){
-  auth.signOut()
-  .then(response => this.setState({logedIn:false}))
-  .catch(error => console.log(error))
-}
+   
+    }
     
     render(){
       return (
-        <View  style={styles.list}>
+        <View  style={styles.body}>
           <View>
            <FlatList
           data={this.state.name}
@@ -103,15 +81,18 @@ logout(){
           renderItem={({ item }) => <User info={item}/>}
           />
           </View>
-          <View>
-        <TouchableOpacity onPress={() =>this.logout()}><Text>Cerrar Sesion</Text></TouchableOpacity></View>
+          <View >
+          <TouchableOpacity onPress={()=>this.props.route.params.logout()}>
+                        <Text>Logout</Text>
+                    </TouchableOpacity>
+       </View> 
         <Text>Ultima conexion: {auth.currentUser.metadata.lastSignInTime}</Text>
         <Text>Posteos: {this.state.numeroPosts}</Text>
         
            <FlatList
           data={this.state.posteos}
           keyExtractor={item => item.id.toString()}
-          renderItem={({ item }) => <Post info={item}/>}
+          renderItem={({ item }) => <Post info={item} navigation={this.props.navigation}/>}
           />
          
         </View>
@@ -120,8 +101,13 @@ logout(){
     }
   }
   const styles = StyleSheet.create({
-    list:{
-      flex: 1,
+      body:{
+        flex:1,
+        alignItems:'center',
+        alignContent:'center',
+        justifyContent:'center',
+
+      backgroundColor:'#f4a261'
     }
   })
   
