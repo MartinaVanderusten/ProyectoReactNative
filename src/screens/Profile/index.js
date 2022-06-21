@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import {db} from '../../firebase/config'
 import {auth} from '../../firebase/config'
 import User from '../../components/User'
-import Post from '../../components/Post'
+import PostPerfil from '../../components/PostPerfil'
 import Login from '../Login'
 
 
@@ -94,7 +94,7 @@ class Profile extends Component {
            <FlatList
           data={this.state.posteos}
           keyExtractor={item => item.id.toString()}
-          renderItem={({ item }) => <Post info={item} navigation={this.props.navigation}/>}
+          renderItem={({ item }) => <PostPerfil info={item} navigation={this.props.navigation}/>}
           />
          
         </View>

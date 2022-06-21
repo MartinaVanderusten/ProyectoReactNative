@@ -5,7 +5,7 @@ import {auth, db} from '../../firebase/config'
 import firebase from 'firebase'
 
 
-class Post extends Component {
+class PostPerfil extends Component {
     constructor(props){
         super(props)
         this.state={
@@ -104,7 +104,16 @@ componentDidMount(){
             posteos: this.props.info.data.id
         },()=>console.log(posteos))
     }
-    
+    borrarPosteos(){
+        db.collection("posts").doc(this.props.info.id).delete().then(() => {
+            console.log("Borrado");
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
+        
+    }
+
+
  render(){
      return(
          <View>
@@ -130,7 +139,7 @@ componentDidMount(){
                          <FontAwesome name='heart-o' size={24} color='black'/>
                      </TouchableOpacity>
                     }
-                   
+                    <TouchableOpacity onPress={()=> this.borrarPosteos()}> <FontAwesome name='trash' size={20} color='black'/></TouchableOpacity>
                     {/*<Text>Comentarios: {this.props.info.data.comments}</Text>*/}
                     <TouchableOpacity onPress={()=>this.props.navigation.navigate('Comments', {id: this.props.info.id}) }>
                         <Text>Comments </Text>
@@ -152,4 +161,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Post;
+export default PostPerfil;
