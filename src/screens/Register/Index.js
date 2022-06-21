@@ -52,7 +52,7 @@ class Register extends Component {
             }
             <View style={styles.navigate}>
               <Text style={styles.text}>¿Ya tenés tu cuenta?</Text>
-              <TouchableOpacity onPress={()=>this.props.navigation.navigate('Login')}>
+              <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Login'),this.props.errorDelete()}}>
                 <Text style={styles.textNav}>Login</Text>
               </TouchableOpacity>
             </View>

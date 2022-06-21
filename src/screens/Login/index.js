@@ -47,7 +47,7 @@ class Login extends Component {
             }
             <View style={styles.navigate}>
               <Text style={styles.text}>¿Todavía no tenés tu cuenta?</Text>
-              <TouchableOpacity onPress={()=>this.props.navigation.navigate('Register')}>
+              <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Register'),this.props.errorDelete()}}>
                 <Text style={styles.textNav}>Registrate</Text>
               </TouchableOpacity>
             </View>
