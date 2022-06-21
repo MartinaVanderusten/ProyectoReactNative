@@ -12,9 +12,6 @@ class Register extends Component {
     }
 
     send(){
-      console.log(this.state.username)
-      console.log(this.state.email)
-      console.log(this.state.password)
       if ((this.state.username.length > 0)&&(this.state.email.length > 0)&&(this.state.password.length > 0)) {
         return(this.props.signUp(this.state.username,this.state.email,this.state.password))
       }

@@ -68,7 +68,7 @@ class StackNavigation extends Component{
                         this.state.logedIn ?
                         <Stack.Group>
                             <Stack.Screen name='TabNavigation' component={ TabNavigation } options={{headerShown:false}}/>
-                            <Stack.Screen name='Comments' component={ Comments } options={{headerShown:false}}/>
+                            <Stack.Screen name='Comments' component={ Comments }/>
                         </Stack.Group>
                         :
                         <Stack.Group>
@@ -94,7 +94,6 @@ class StackNavigation extends Component{
                     }
                 </Stack.Navigator>
             </NavigationContainer>
-
         )
     }
 
