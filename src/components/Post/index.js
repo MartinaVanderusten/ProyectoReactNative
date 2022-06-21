@@ -131,8 +131,10 @@ componentDidMount(){
                          <FontAwesome name='heart-o' size={24} color='black'/>
                      </TouchableOpacity>
                     }
-                   <TouchableOpacity onPress={()=>this.props.navigation.navigate('Comments', {id: this.props.info.id}) }>
-                        <Text> Comentar </Text>
+                    <TouchableOpacity onPress={()=> this.delete()}> <FontAwesome name='trash' size={20} color='black'/></TouchableOpacity>
+                    {/*<Text>Comentarios: {this.props.info.data.comments}</Text>*/}
+                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Comments', {id: this.props.info.id}) }>
+                        <Text>Comments </Text>
                     </TouchableOpacity>   
                  </View>
              </View>

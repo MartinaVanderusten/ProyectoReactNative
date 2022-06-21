@@ -54,7 +54,7 @@ class Comments extends Component {
             </View>
         }
             />
-            <View>
+            <View style={styles.agregar}>
                 <TextInput
                 placeholder='Agrega tu comentario'
                 onChangeText={
@@ -82,7 +82,8 @@ const styles = StyleSheet.create({
       width:'100%',
       height:'100%',
       justifyContent:'center',
-      alignItems:'center'
+      alignItems:'center',
+      backgroundColor:'#f4a261',
     },
     comment:{
         marginTop:30
@@ -94,13 +95,21 @@ const styles = StyleSheet.create({
     inputComment:{
       borderWidth:1,
       backgroundColor:'#c3c3c3',
-      width:'80%'
+      borderRadius:'5px'
+      
     },
     btnComment:{
-      width:'20%',
+      
       padding:10,
-      backgroundColor:'#d3d3d3'
-  
+      backgroundColor:'#d3d3d3',
+      borderRadius:'10px',
+      margin: 3,
+      
+    },
+    agregar:{
+        marginBottom:80,
+        flexDirection:'row',
+        borderRadius:''
     }
   })
 
