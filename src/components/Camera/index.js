@@ -104,7 +104,7 @@ export default class MyCamera extends Component {
                     /> 
                     </View>
                     <TouchableOpacity style={styles.button} onPress = {()=> this.tomaLaFoto()}>
-                        <Text>Sacar foto</Text>
+                        <Text>Take picture</Text>
                     </TouchableOpacity>
                 </>
             :
@@ -129,14 +129,18 @@ const styles = StyleSheet.create({
     camara:{
       flex:5/7,  
       aspectRatio:1/1,
-      width: '60%'
+      width: '60%',
     },
+
     button:{
         flex:1/7,
         justifyContent:'center',
         alignItems: 'center',
-        width: '20%',
-        backgroundColor:'#2a9d8f',
+        width:'14%',
+        backgroundColor:'#e9c46a',
+        borderRadius: '10px',
+        marginTop:10
+        
     },
 
     foto:{
@@ -149,7 +153,6 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems: 'center',
         flexDirection: 'row',
-        width: '100%'
-        
+        width: '100%',
     }
 })

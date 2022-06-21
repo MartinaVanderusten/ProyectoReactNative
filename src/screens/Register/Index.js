@@ -20,7 +20,7 @@ class Register extends Component {
     render(){
       return (
         <View style={styles.body}>
-          <View style={styles.conteiner}>
+          <View style={styles.container}>
             <Text style={styles.textTitle}>Register</Text>
             <TextInput style={styles.textInput}
               keyboardType='default'
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     backgroundColor:'#264653',
   },
-  conteiner:{
+  container:{
     alignItems:'center',
     alignContent:'center',
     justifyContent:'center',
@@ -96,10 +96,12 @@ const styles = StyleSheet.create({
     backgroundColor:'#264653',
     borderRadius:5,
     borderWidth:2,
-    borderColor:'#2a9d8f'
+    borderColor:'#2a9d8f',
+    color:'white'
   },
   text:{
     textAlign:'center',
+    
   },
   textNav:{
     textAlign:'center',
@@ -110,6 +112,7 @@ const styles = StyleSheet.create({
     marginBottom:10,
     fontSize:24,
     marginBottom:20,
+    
   },
   textError:{
     textAlign:'center',
@@ -127,6 +130,7 @@ const styles = StyleSheet.create({
     width:'32%',
     padding:5,
     borderRadius:5,
+    
   },
   okey:{
     backgroundColor:'#2a9d8f',
