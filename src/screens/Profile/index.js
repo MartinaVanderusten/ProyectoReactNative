@@ -81,13 +81,15 @@ class Profile extends Component {
           renderItem={({ item }) => <User info={item}/>}
           />
           </View>
-          <View >
-          <TouchableOpacity onPress={()=>this.props.route.params.logout()}>
-                        <Text>Logout</Text>
-                    </TouchableOpacity>
-       </View> 
-        <Text>Ultima conexion: {auth.currentUser.metadata.lastSignInTime}</Text>
+         
+        <Text>Última conexión: {auth.currentUser.metadata.lastSignInTime}</Text>
         <Text>Posteos: {this.state.numeroPosts}</Text>
+
+        <View style={styles.btnLogout}>
+          <TouchableOpacity onPress={()=>this.props.route.params.logout()}>
+                  <Text>Log out</Text>
+          </TouchableOpacity>
+       </View> 
         
            <FlatList
           data={this.state.posteos}
@@ -102,12 +104,19 @@ class Profile extends Component {
   }
   const styles = StyleSheet.create({
       body:{
+        paddingTop:50,
         flex:1,
         alignItems:'center',
         alignContent:'center',
         justifyContent:'center',
+        backgroundColor:'#f4a261'
+    },
+    btnLogout: {
+      padding:10,
+      backgroundColor:'#2a9d8f',
+      borderRadius:'10px',
+      margin: 5,
 
-      backgroundColor:'#f4a261'
     }
   })
   
