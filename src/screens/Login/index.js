@@ -20,7 +20,7 @@ class Login extends Component {
     render(){
       return (
         <View style={styles.body}>
-          <View style={styles.conteiner}>
+          <View style={styles.container}>
             <Text style={styles.textTitle}>Login</Text>
             <TextInput style={styles.textInput}
               keyboardType='email-address'
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     backgroundColor:'#264653',
   },
-  conteiner:{
+  container:{
     alignItems:'center',
     alignContent:'center',
     justifyContent:'center',
@@ -91,7 +91,8 @@ const styles = StyleSheet.create({
     backgroundColor:'#264653',
     borderRadius:5,
     borderWidth:2,
-    borderColor:'#2a9d8f'
+    borderColor:'#2a9d8f',
+    color:'white'
   },
   text:{
     textAlign:'center',
