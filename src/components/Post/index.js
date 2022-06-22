@@ -12,7 +12,8 @@ class Post extends Component {
             islike: false,
             cantidadLikes: this.props.info.data.likes.length,
             comentarios: [],
-            posteos:[]
+            posteos:[],
+            name:''
         }
     }
 componentDidMount(){
