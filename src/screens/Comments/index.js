@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
       height:'100%',
       justifyContent:'center',
       alignItems:'center',
-      backgroundColor:'#f4a261',
+      backgroundColor:'#f4a261'
     },
     comment:{
         marginTop:30

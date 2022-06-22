@@ -48,8 +48,10 @@ class NewPost extends Component {
                 <MyCamera cuandoSubaLaImagen={(url)=> this.cuandoSubaLaImagen(url)}/>
                 :
 
-                <View>
-                    <Text>Escribi la descripción</Text>
+                <View style={styles.body}>
+
+                <View style={styles.captionContainer}>
+                    <Text>Write caption to post:</Text>
                     <TextInput 
                     style={styles.textarea}
                     onChangeText= {(text)=> this.setState({
@@ -65,6 +67,8 @@ class NewPost extends Component {
                         <Text>Post</Text>
                     </TouchableOpacity>
                 </View>
+                                </View>
+
             }
             </>
 
@@ -73,18 +77,47 @@ class NewPost extends Component {
 }
 
 const styles = StyleSheet.create({
+
+    body:{
+        backgroundColor:'#f4a261',
+        alignItems: 'center',
+        flex: '1'
+
+    },
+  
     textarea:{
         borderWidth:1,
-        borderColor:'#c3c3c3',
-        height:'auto',
-        minHeight:60,
-        marginTop:10
+        borderColor:'#264653',
+        width: '300px',
+        height:'40',
+        marginTop:10,
+        backgroundColor:'#f4a261',
+        alignItems: 'center',
+
+       
+
     },
     btn:{
         marginTop:16,
-        borderColor:'red',
-        borderWidth:1
+        borderColor:'#264653',
+        borderWidth:1,
+        alignItems: 'center',
+        borderRadius:'3px',
+        width:'20%',
+        justifyContent:'center',
+        backgroundColor:'#e9c46a',
+
+        
+    },
+
+    captionContainer:{
+        backgroundColor:'#f4a261',
+        marginTop:50,
+
     }
+
+   
+   
 })
 
 export default NewPost

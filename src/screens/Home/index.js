@@ -132,12 +132,14 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     backgroundColor:'#e9c46a',
   },
+
   container:{
     flex:6/7,
     alignItems:'center',
     alignContent:'center',
     justifyContent:'center',
   },
+
   header:{
     flex:1/7,
     alignItems:'center',
@@ -145,11 +147,13 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     width:'100%',
   },
+
   search:{
     flexDirection:'row',
     justifyContent:'center',
     width:'72%',
   },
+
   textInput:{
     height:36,
     width:'100%',
@@ -159,18 +163,22 @@ const styles = StyleSheet.create({
     backgroundColor:'#2a9d8f',
     placeholderTextColor:'#1a1a1a',
     borderRadius:10,
-    borderWidth:2,
+    borderWidth:1,
     borderColor:'#264653',
+    fontFamily:'Roboto',
   },
+
   send:{
     height:36,
     aspectRatio:'1/1',
     padding:10,
     backgroundColor:'#2a9d8f',
     borderRadius:'50%',
-    borderWidth:2,
+    borderWidth:1,
     borderColor:'#264653',
+    alignItems:'center'
   },
+  
   noResult:{
     width:'60%',
     textAlign:'center',
