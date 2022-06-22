@@ -17,7 +17,7 @@ class Post extends Component {
         }
     }
 componentDidMount(){
-    const milike=this.props.info.data.likes.includes(auth.currentUser.email)
+
     if( 
         this.props.info.data.likes.includes(auth.currentUser.email)        
     )
@@ -33,49 +33,9 @@ componentDidMount(){
         console.log(user.metadata.lastSignInTime)
        console.log(user)
        console.log(this.state.email)
-       db.collection('posts').where('owner', '==', this.state.email)
-       .onSnapshot(
-         docs=> {
-           let posteos = []
-           docs.forEach(
-             doc => {
-               posteos.push({
-                 id:doc.id,
-                 data: doc.data()
-               })
-             } 
-           )
-           this.setState({
-             posteos:posteos,
-             numeroPosts: posteos.length
-             
-           } )
-         } 
-       )
-       db.collection('users').where('owner', '==', this.state.email)
-    .onSnapshot(
-      docs=> {
-        let name = []
-        docs.forEach(
-          doc => {
-            name.push({
-              id:doc.id,
-              data: doc.data()
-
-            })
-          }
-        )
-        this.setState({
-          name:name
-          
-        })
-      } 
-    )
       
-      })
-   
+      })   
 }
-
     like(){
         db.collection('posts')
             .doc(this.props.info.id)
@@ -100,12 +60,6 @@ componentDidMount(){
             cantidadLikes: this.state.cantidadLikes -1
         })
     }
-    posteos(){
-        this.setState({
-            posteos: this.props.info.data.id
-        },()=>console.log(posteos))
-    }
-    
  render(){
      return(
          <View>
